@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donor System</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAvO4hsB_Ohz5nLkLoVHDg0z05eA3WZogA",
+            authDomain: "ss-blooddonors.firebaseapp.com",
+            projectId: "ss-blooddonors",
+            storageBucket: "ss-blooddonors.appspot.com",
+            messagingSenderId: "1034905508996",
+            appId: "1:1034905508996:web:e946905152db09ffa8b6d1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        window.db = db;
+    </script>
+</head>
+<body>
+    <h2>Welcome to the Blood Donor System</h2>
+    <button onclick="window.location.href='donor.html'">Donor Mode</button>
+    <button onclick="showAdminLogin()">Admin Mode</button>
+
+    <div id="adminLogin" style="display:none; margin-top:20px;">
+        <h3>Admin Login</h3>
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <button onclick="validateAdmin()">Login</button>
+    </div>
+
+    <script>
+        function showAdminLogin() {
+            document.getElementById('adminLogin').style.display = 'block';
+        }
+
+        function validateAdmin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === "shahu_blood_bank" && password === "rotory@kop") {
+                window.location.href = 'admin.html';
+            } else {
+                alert("Invalid credentials!");
+            }
+        }
+    </script>
+</body>
+</html>
